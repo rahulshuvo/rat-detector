@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rat Diary</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body id="body">
+  <div id="image-container" style="display: none;">
+    <img id="image" src="" alt="">
+    <button id="close-button" onclick="hideImage()">X</button>
+  </div>
+  <div class="landing-page">
+    <header id="showcase">
+      <h1>Welcome to the Rat Detector Project!</h1>
+    </header>
+    <section id="section-a">
+      <p>
+        Our goal is to create a low-cost, efficient solution for detecting
+        and tracking rat populations using a Raspberry Pi and the
+        state-of-the-art YOLOv5 object detection algorithm.
+      </p>
+    </section>
+    <section id="section-b">
+      <p>
+        The Raspberry Pi is a small, low-cost computer that is perfect for
+        running the YOLOv5 algorithm, which is able to quickly and
+        accurately detect rats in video footage. By using a low-cost
+        solution like the Raspberry Pi, we are able to bring this technology
+        to a wider range of users, including pest control professionals,
+        researchers, and even homeowners.
+        <br></br>
+        <br></br>
+        The YOLOv5 algorithm is one of the version of the popular YOLO (You
+        Only Look Once) object detection algorithm. It is able to detect
+        objects in real-time and with a high level of accuracy. This makes
+        it perfect for tracking rat populations in a variety of
+        environments, from urban to rural.
+        <br></br>
+        <br></br>
+        Thank you for visiting and we look forward to sharing our progress
+        with you.
+      </p>
+    </section>
+  </div>
+  <div class="table">
+    {% for row in data %}
+    <div class="table-column">
+      <p><span> Start of discovery: </span> {{ row[0] }}</p>
+      <p><span>End of discovery: </span> {{ row[1] }}</p>
+      <img id="picture" src="data:image/jpeg;base64,{{ row[2] }}" onclick="showImage(src)">
+    </div>
+    {% endfor %}
+  </div>
+  <footer id="footer">
+    <p>&copy; Created for Cloud Computing (WS2223)</p>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+sudo docker run -it --rm --privileged  --device="/dev/video0:/dev/video0" -p 1883:1883 sensor:v1
